@@ -14,20 +14,18 @@ userService.create = async (data) => {
     throw err;
   }
 };
-// userService.findByEmail = (email) =>
-//   prisma.user.findFirst({
-//     where: {
-//       email,
-//       deletedAt: null,
-//     },
-//     // omit: { password: true }, //เอา password ออก เป็น lib ของ prisma
-//   });
+userService.findByEmail = (email) =>
+  prisma.user.findFirst({
+    where: {
+      email,
+    },
+    // omit: { password: true }, //เอา password ออก เป็น lib ของ prisma
+  });
 
-// userService.findById = (id) =>
-//   prisma.user.findFirst({
-//     where: {
-//       id,
-//       deletedAt: null,
-//     },
-//     omit: { password: true },
-//   });
+userService.findById = (id) =>
+  prisma.user.findFirst({
+    where: {
+      id,
+    },
+    // omit: { password: true },
+  });

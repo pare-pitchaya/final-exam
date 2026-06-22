@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerSchema } from "../schemas/auth.schema.js";
+import { loginSchema, registerSchema } from "../schemas/auth.schema.js";
 import { validate } from "../middleware/validate.middleware.js";
 import { authController } from "../controllers/auth.controller.js";
 
@@ -8,4 +8,10 @@ authRouter.post(
   "/register",
   validate({ body: registerSchema }),
   authController.register,
+);
+authRouter.post(
+  "/login",
+  authController.login,
+  validate({ body: loginSchema }),
+  authController.login,
 );
